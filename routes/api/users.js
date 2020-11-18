@@ -3,6 +3,8 @@ const router = express.Router();
 const { check, validationResult } = require("express-validator"); // Great library for validating inputs
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const User = require("../../models/User");
 
@@ -52,11 +54,28 @@ router.post(
       // Encrypt password
       const salt = await bcrypt.genSalt();
       user.password = await bcrypt.hash(password, salt);
-      await user.save(); // Save user into database
 
       // Return JWT
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
 
-      res.send("User registered!");
+      jwt.sign(
+        payload,
+        process.env.jwtSecret,
+        { expiresIn: 3600 },
+        (err, token) => {
+          if (err) {
+            throw err;
+          } else {
+            res.json({ token });
+          }
+        }
+      );
+
+      await user.save(); // Save user into database
     } catch (err) {
       console.error(err.message);
       res.status(500).send("POST /api/users - Server Error!");
