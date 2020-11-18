@@ -9,8 +9,8 @@ require("dotenv").config();
 
 /**
  * @route         GET api/auth
- * @description   Test route
- * @access        public
+ * @description   Get user by ID
+ * @access        private
  */
 router.get("/", auth, async (req, res) => {
   try {
