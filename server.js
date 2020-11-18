@@ -7,6 +7,9 @@ const app = express();
 // Connect to MongoDB
 connectToDB();
 
+// Init middleware
+app.use(express.json({ extended: false }));
+
 app.get("/", (req, res) => res.send("API Running"));
 
 // Define API routes
