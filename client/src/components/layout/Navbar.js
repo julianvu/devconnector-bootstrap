@@ -44,7 +44,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-dark border-bottom border-primary mb-5">
+      <nav className="navbar navbar-expand-lg bg-dark border-bottom border-primary">
         <h1>
           <Link to="/" className="navbar-brand text-light font-weight-bold">
             <i className="fas fa-code"></i> DevConnector
