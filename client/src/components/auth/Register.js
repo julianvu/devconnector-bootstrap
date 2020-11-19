@@ -17,12 +17,12 @@ const Register = () => {
       [e.target.name]: e.target.value,
     });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirmation) {
       console.log("Passwords do not match");
     } else {
-      console.log(formData);
+      console.log("Registration SUCCESS!");
     }
   };
 
@@ -95,7 +95,7 @@ const Register = () => {
         <input type="submit" value="Register" className="btn btn-primary" />
       </form>
       <p className="my-1">
-        Already have an account? <Link to="/">Sign In</Link>
+        Already have an account? <Link to="/login">Sign In</Link>
       </p>
     </Fragment>
   );
