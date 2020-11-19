@@ -1,0 +1,20 @@
+// Custom theming variables
+$primary: #17a2b8;
+$dark: #343a40;
+$light: #f4f4f4;
+$danger: #dc3545;
+$success: #28a745;
+
+$font-family-sans-serif: "Raleway", sans-serif;
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  color: #333;
+}
+
+#hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(./img/showcase.jpg);
+}
