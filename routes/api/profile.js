@@ -4,6 +4,7 @@ const router = express.Router();
 const request = require("request");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
+const Post = require("../../models/Post");
 const { check, validationResult } = require("express-validator"); // Great library for validating inputs
 require("dotenv").config();
 
@@ -180,7 +181,9 @@ router.get("/user/:user_id", async (req, res) => {
  */
 router.delete("/", auth, async (req, res) => {
   try {
-    // @todo - remove users posts
+    // Delete user's posts
+    await Post.deleteMany({ user: req.user.id });
+
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     // Remove user
