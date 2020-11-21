@@ -25,9 +25,9 @@ const PostItem = ({
   };
 
   return (
-    <div className="post bg-white py-4 my-2 border rounded-lg row align-items-center">
+    <div className="post bg-white py-4 my-4 border rounded-lg row mx-auto align-items-center">
       <div className="col-md-3 text-center">
-        <Link to="/profile">
+        <Link to={`/profile/${user}`}>
           <img src={avatar} alt="" className="rounded-circle" />
           <h4 className="m-0">{name}</h4>
         </Link>
