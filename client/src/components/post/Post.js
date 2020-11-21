@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getPost } from "../../actions/post";
 import Spinner from "../layout/Spinner";
 import PostItem from "../posts/PostItem";
 import { Link } from "react-router-dom";
+import CommentForm from "./CommentForm";
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
@@ -19,6 +20,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
         Back to Posts
       </Link>
       <PostItem post={post} showActions={false} />
+      <CommentForm postID={post._id} />
     </div>
   );
 };
