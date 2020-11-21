@@ -33,7 +33,7 @@ const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
               {repo.description && <p>{repo.description}</p>}
             </div>
             <div>
-              <ul>
+              <ul className="mb-0">
                 <li className="badge badge-primary d-block mb-1">
                   Stars: {repo.stargazers_count}
                 </li>
