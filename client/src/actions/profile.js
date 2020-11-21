@@ -17,6 +17,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 
     dispatch({ type: GET_PROFILE, payload: res.data });
   } catch (error) {
+    dispatch({ type: CLEAR_PROFILE });
     dispatch({
       type: PROFILE_ERROR,
       payload: {
@@ -64,9 +65,8 @@ export const getProfileById = (userID) => async (dispatch) => {
 
 // Get GitHub repos
 export const getGitHubRepos = (username) => async (dispatch) => {
-  dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get(`/api/github/${username}`);
+    const res = await axios.get(`/api/profile/github/${username}`);
 
     dispatch({ type: GET_REPOS, payload: res.data });
   } catch (error) {
@@ -222,7 +222,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     try {
-      const rest = await axios.delete("/api/profile/");
+      await axios.delete("/api/profile/");
 
       dispatch({
         type: CLEAR_PROFILE,
