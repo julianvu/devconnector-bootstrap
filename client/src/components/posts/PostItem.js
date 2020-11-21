@@ -11,6 +11,7 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
+  showActions,
 }) => {
   const onLikeClick = (postID) => {
     addLike(postID);
@@ -38,44 +39,50 @@ const PostItem = ({
           <small className="text-muted">
             Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
           </small>
-          <div className="d-flex">
-            <button
-              onClick={() => onLikeClick(_id)}
-              className="btn btn-light btn-like-unlike mr-2"
-            >
-              <i className="fas fa-thumbs-up"></i>
-
-              <span>
-                {likes.length > 0 && (
-                  <span className="badge badge-light">{likes.length}</span>
-                )}
-              </span>
-            </button>
-            <button
-              onClick={() => onUnlikeClick(_id)}
-              className="btn btn-light btn-like-unlike mr-2"
-            >
-              <i className="fas fa-thumbs-down"></i>
-            </button>
-            <Link to={`/post/${_id}`} className="btn btn-primary mr-2">
-              Discussion{" "}
-              {comments.length > 0 && (
-                <span className="badge badge-light">{comments.length}</span>
-              )}
-            </Link>
-            {!auth.loading && user === auth.user._id && (
+          {showActions && (
+            <div className="d-flex">
               <button
-                onClick={() => onDeleteClick(_id)}
-                className="btn btn-danger"
+                onClick={() => onLikeClick(_id)}
+                className="btn btn-light btn-like-unlike mr-2"
               >
-                <i className="fas fa-times"></i>
+                <i className="fas fa-thumbs-up"></i>
+
+                <span>
+                  {likes.length > 0 && (
+                    <span className="badge badge-light">{likes.length}</span>
+                  )}
+                </span>
               </button>
-            )}
-          </div>
+              <button
+                onClick={() => onUnlikeClick(_id)}
+                className="btn btn-light btn-like-unlike mr-2"
+              >
+                <i className="fas fa-thumbs-down"></i>
+              </button>
+              <Link to={`/posts/${_id}`} className="btn btn-primary mr-2">
+                Discussion{" "}
+                {comments.length > 0 && (
+                  <span className="badge badge-light">{comments.length}</span>
+                )}
+              </Link>
+              {!auth.loading && user === auth.user._id && (
+                <button
+                  onClick={() => onDeleteClick(_id)}
+                  className="btn btn-danger"
+                >
+                  <i className="fas fa-times"></i>
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
+};
+
+PostItem.defaultProps = {
+  showActions: true,
 };
 
 PostItem.propTypes = {
@@ -84,6 +91,7 @@ PostItem.propTypes = {
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
+  showActions: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
