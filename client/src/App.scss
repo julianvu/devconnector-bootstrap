@@ -6,6 +6,7 @@ $danger: #dc3545;
 $success: #28a745;
 
 $font-family-sans-serif: "Raleway", sans-serif;
+$enable-responsive-font-sizes: true;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
@@ -18,6 +19,12 @@ body {
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url(./img/showcase.jpg);
+}
+
+.profiles-list {
+  img {
+    width: 156px;
+  }
 }
 
 .post {
@@ -34,4 +41,8 @@ body {
   img {
     width: 96px;
   }
+}
+
+#register {
+  max-width: 768px;
 }

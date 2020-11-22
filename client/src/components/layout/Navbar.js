@@ -6,7 +6,7 @@ import { logout } from "../../actions/auth";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <ul className="navbar-nav ml-auto flex-row">
+    <ul className="navbar-nav">
       <li className="nav-item mx-2">
         <Link to="/profiles" className="nav-link text-light">
           Developers
@@ -33,8 +33,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   const guestLinks = (
-    <ul className="navbar-nav ml-auto">
-      <li className="nav-item mx-2">
+    <ul className="navbar-nav d-flex flex-row justify-content-around justify-content-sm-end w-100">
+      <li className="nav-item">
         <Link to="/profiles" className="nav-link text-light">
           Developers
         </Link>
@@ -54,8 +54,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-dark border-bottom border-primary">
-        <h1>
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark border-bottom border-primary d-flex justify-content-center justify-content-sm-between flex-wrap flex-sm-nowrap">
+        <h1 className="align-self-center">
           <Link to="/" className="navbar-brand text-light font-weight-bold">
             <i className="fas fa-code"></i> DevConnector
           </Link>

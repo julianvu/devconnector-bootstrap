@@ -12,7 +12,7 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <div className="row justify-content-center align-items-center bg-light my-3 p-3 mx-5 mx-md-0 rounded-lg">
+    <div className="row justify-content-center align-items-center bg-light my-3 p-3 mx-4 mx-sm-5 mx-md-0 rounded-lg">
       <img src={avatar} alt="" className="rounded-circle col-md-3" />
       <div className="col-md-6 text-center text-md-left my-3 my-md-0">
         <h2>{name}</h2>
@@ -25,7 +25,7 @@ const ProfileItem = ({
         </Link>
       </div>
       <div className="col-md-3 d-flex flex-column align-items-center">
-        <ul>
+        <ul className="list-unstyled">
           {skills.slice(0, 4).map((skill, index) => (
             <li key={index} className="text-primary">
               <i className="fas fa-check"></i> {skill}

@@ -12,7 +12,7 @@ const Landing = ({ isAuthenticated }) => {
     <div>
       <section
         id="hero"
-        className="jumbotron jumbotron-fluid text-center text-light d-flex flex-column justify-content-center align-items-center"
+        className="jumbotron jumbotron-fluid mb-0 text-center text-light d-flex flex-column justify-content-center align-items-center"
       >
         <div className="container ">
           <h1 className="display-3 font-weight-bold">Developer Connector</h1>
