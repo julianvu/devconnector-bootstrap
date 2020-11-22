@@ -22,14 +22,14 @@ const Profile = ({
 
   return (
     <div className="my-5">
-      {profile === null ? (
+      {loading ? (
+        <Spinner />
+      ) : profile === null ? (
         <Fragment>
           <h3 className="text-primary">
             This profile does not exist or has been removed.
           </h3>
         </Fragment>
-      ) : loading ? (
-        <Spinner />
       ) : (
         <Fragment>
           <Link to="/profiles" className="btn btn-light mx-1">

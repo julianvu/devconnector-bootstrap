@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/post";
@@ -14,7 +14,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <Fragment>
+    <div className="mt-5">
       <h1 className="display-5 text-primary">Posts</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Welcome to the community
@@ -25,7 +25,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
           <PostItem key={post._id} post={post} />
         ))}
       </div>
-    </Fragment>
+    </div>
   );
 };
 
