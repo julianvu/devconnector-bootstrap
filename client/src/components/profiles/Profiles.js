@@ -1,14 +1,24 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getProfiles } from "../../actions/profile";
+import { clearProfiles, getProfiles } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
 import ProfileItem from "./ProfileItem";
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+const Profiles = ({
+  getProfiles,
+  clearProfiles,
+  profile: { profiles, loading },
+}) => {
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
+
+  useEffect(() => {
+    return () => {
+      clearProfiles();
+    };
+  }, [clearProfiles]);
 
   return (
     <div className="mt-5">
@@ -40,6 +50,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 
 Profiles.propTypes = {
   getProfiles: PropTypes.func.isRequired,
+  clearProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -47,4 +58,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfiles })(Profiles);
+export default connect(mapStateToProps, { getProfiles, clearProfiles })(
+  Profiles
+);
