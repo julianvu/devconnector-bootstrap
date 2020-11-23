@@ -25,8 +25,8 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className="display-3 text-primary">Dashboard</h1>
+    <div className="mt-5">
+      <h1 className="display-4 text-primary">Dashboard</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Welcome{user && ", " + user.name}
       </p>
@@ -52,7 +52,7 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
-    </Fragment>
+    </div>
   );
 };
 
