@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
+import { Button, Form } from "react-bootstrap";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -36,73 +37,68 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <div id="register" className="mt-5">
-      <h1 className="display-4 text-primary">Sign Up</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Create Your Account
-      </p>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
+    <div id="register" className="mt-5 mx-auto">
+      <div className="text-center">
+        <h1 className="display-4 text-primary">Sign Up</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Create Your Account
+        </p>
+      </div>
+      <Form onSubmit={(e) => onSubmit(e)}>
+        <Form.Group controlId="nameRegister">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
             type="text"
-            className="form-control"
-            id="name"
+            name="name"
             required
             placeholder="Name"
-            name="name"
             value={name}
             onChange={(e) => onChange(e)}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
+        </Form.Group>
+        <Form.Group controlId="emailRegister">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
             type="email"
             name="email"
             required
-            placeholder="Email Address"
-            id="email"
-            className="form-control"
+            placeholder="Email"
             value={email}
             onChange={(e) => onChange(e)}
           />
-          <small>
+          <small className="text-muted">
             This site uses Gravatar so if you want a profile image, use a
             Gravatar email.
           </small>
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
+        </Form.Group>
+        <Form.Group controlId="passwordRegister">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             type="password"
             name="password"
-            placeholder="Password"
             minLength="6"
-            id="password"
-            className="form-control"
+            required
+            placeholder="Password"
             value={password}
             onChange={(e) => onChange(e)}
-            required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="passwordConfirmation">Confirm Password</label>
-
-          <input
+        </Form.Group>
+        <Form.Group controlId="passwordConfirmationRegister">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
             type="password"
             name="passwordConfirmation"
-            placeholder="Confirm Password"
             minLength="6"
-            id="passwordConfirmation"
-            className="form-control"
+            required
+            placeholder="Confirm Password"
             value={passwordConfirmation}
             onChange={(e) => onChange(e)}
-            required
           />
-        </div>
-        <input type="submit" value="Register" className="btn btn-primary" />
-      </form>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Sign Up
+        </Button>
+      </Form>
       <p className="my-1">
         Already have an account? <Link to="/login">Sign In</Link>
       </p>

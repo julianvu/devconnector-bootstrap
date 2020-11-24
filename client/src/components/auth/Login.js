@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
+import { Form, Button } from "react-bootstrap";
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -29,41 +30,41 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <div className="mt-5">
-      <h1 className="display-4 text-primary">Sign In</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Sign Into Your Account
-      </p>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
+    <div id="login" className="mt-5 mx-auto">
+      <div className="text-center">
+        <h1 className="display-4 text-primary">Sign In</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Sign Into Your Account
+        </p>
+      </div>
+      <Form onSubmit={(e) => onSubmit(e)}>
+        <Form.Group controlId="emailSignIn">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
             type="email"
             name="email"
             required
             placeholder="Email Address"
-            id="email"
-            className="form-control"
             value={email}
             onChange={(e) => onChange(e)}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
+        </Form.Group>
+        <Form.Group controlId="passwordSignIn">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             type="password"
             name="password"
             placeholder="Password"
             minLength="6"
-            id="password"
-            className="form-control"
             value={password}
             onChange={(e) => onChange(e)}
             required
           />
-        </div>
-        <input type="submit" value="Login" className="btn btn-primary" />
-      </form>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Sign In
+        </Button>
+      </Form>
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
