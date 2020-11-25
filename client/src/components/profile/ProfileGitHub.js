@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getGitHubRepos } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
+import { Badge } from "react-bootstrap";
 
 const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
   useEffect(() => {
@@ -34,15 +35,15 @@ const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
             </div>
             <div>
               <ul className="mb-0">
-                <li className="badge badge-primary d-block mb-1">
+                <Badge variant="primary" className="d-block mb-1">
                   Stars: {repo.stargazers_count}
-                </li>
-                <li className="badge badge-dark d-block mb-1">
+                </Badge>
+                <Badge variant="dark" className="d-block mb-1">
                   Watchers: {repo.watchers_count}
-                </li>
-                <li className="badge badge-light d-block">
+                </Badge>
+                <Badge variant="light" className="d-block">
                   Forks: {repo.forks_count}
-                </li>
+                </Badge>
               </ul>
             </div>
           </div>
