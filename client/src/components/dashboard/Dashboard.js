@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
+import { Button } from "react-bootstrap";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -36,20 +37,22 @@ const Dashboard = ({
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
           <div className="my-2">
-            <button
-              onClick={() => onDeleteClicked()}
-              className="btn btn-danger"
-            >
+            <Button variant="danger" onClick={() => onDeleteClicked()}>
               <i className="fas fa-user-minus"></i> Delete Account
-            </button>
+            </Button>
           </div>
         </Fragment>
       ) : (
         <Fragment>
           <p>You have not yet set up a profile. Please add some info.</p>
-          <Link to="/create-profile" className="btn btn-primary my-1">
+          <Button
+            as={Link}
+            variant="primary"
+            to="/create-profile"
+            className="my-1"
+          >
             Create Profile
-          </Link>
+          </Button>
         </Fragment>
       )}
     </div>

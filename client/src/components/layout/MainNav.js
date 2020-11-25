@@ -7,7 +7,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const MainNav = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <Nav>
+    <Nav className="d-flex flex-row justify-content-around justify-content-sm-end w-100">
       <Nav.Item className="mx-2">
         <Nav.Link as={Link} to="/profiles" className="text-light">
           Developers

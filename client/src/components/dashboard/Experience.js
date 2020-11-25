@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Moment from "react-moment";
 import PropTypes from "prop-types";
 import { deleteExperience } from "../../actions/profile";
+import { Table } from "react-bootstrap";
 
 const Experience = ({ experience, deleteExperience }) => {
   const onDeleteClicked = (id) => {
@@ -34,7 +35,7 @@ const Experience = ({ experience, deleteExperience }) => {
   return (
     <Fragment>
       <h2 className="my-2">Experience Credentials</h2>
-      <table className="table table-borderless">
+      <Table borderless>
         <thead className="thead-light">
           <tr>
             <th>Company</th>
@@ -44,7 +45,7 @@ const Experience = ({ experience, deleteExperience }) => {
           </tr>
         </thead>
         <tbody>{experiences}</tbody>
-      </table>
+      </Table>
     </Fragment>
   );
 };
